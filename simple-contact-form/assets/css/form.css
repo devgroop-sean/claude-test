@@ -1,0 +1,102 @@
+/* Simple Contact Form — minimal styles that inherit the theme's fonts and colors. */
+.scf-wrap {
+	--scf-border: #c3c4c7;
+	--scf-focus: #2271b1;
+	--scf-error: #b32d2e;
+	--scf-success: #1a7f37;
+	--scf-radius: 6px;
+	max-width: 720px;
+	margin: 0 0 1.5em;
+}
+
+.scf-form { margin: 0; }
+.scf-form[hidden] { display: none; }
+
+.scf-row--half {
+	display: grid;
+	grid-template-columns: repeat( auto-fit, minmax( 220px, 1fr ) );
+	gap: 0 1em;
+}
+
+.scf-field { margin: 0 0 1em; }
+
+.scf-field label {
+	display: block;
+	margin-bottom: 0.35em;
+	font-weight: 600;
+}
+
+.scf-req { color: var( --scf-error ); }
+
+.scf-field input[type="text"],
+.scf-field input[type="email"],
+.scf-field input[type="tel"],
+.scf-field textarea {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.6em 0.75em;
+	border: 1px solid var( --scf-border );
+	border-radius: var( --scf-radius );
+	background: #fff;
+	color: inherit;
+	font: inherit;
+	line-height: 1.4;
+}
+
+.scf-field textarea { resize: vertical; min-height: 8em; }
+
+.scf-field input:focus,
+.scf-field textarea:focus {
+	outline: 2px solid var( --scf-focus );
+	outline-offset: 1px;
+	border-color: var( --scf-focus );
+}
+
+.scf-field [aria-invalid="true"] { border-color: var( --scf-error ); }
+
+.scf-field--consent label {
+	display: flex;
+	gap: 0.5em;
+	align-items: flex-start;
+	font-weight: normal;
+}
+.scf-field--consent input { margin-top: 0.3em; }
+
+.scf-error {
+	display: block;
+	margin-top: 0.3em;
+	color: var( --scf-error );
+	font-size: 0.9em;
+}
+
+.scf-submit {
+	cursor: pointer;
+	padding: 0.7em 1.5em;
+	border: 0;
+	border-radius: var( --scf-radius );
+	background: var( --scf-focus );
+	color: #fff;
+	font: inherit;
+	font-weight: 600;
+}
+.scf-submit:hover { filter: brightness( 1.1 ); }
+.scf-submit:disabled { opacity: 0.6; cursor: wait; }
+
+.scf-notice {
+	margin: 0 0 1em;
+	padding: 0.75em 1em;
+	border-left: 4px solid currentColor;
+	border-radius: var( --scf-radius );
+}
+.scf-notice:focus { outline: none; }
+.scf-notice--success { color: var( --scf-success ); background: #edfaef; }
+.scf-notice--error { color: var( --scf-error ); background: #fcf0f1; }
+
+/* Honeypot: off-screen rather than display:none so naive bots still see it. */
+.scf-hp {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
